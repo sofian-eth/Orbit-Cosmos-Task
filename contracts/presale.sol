@@ -64,13 +64,13 @@ contract Token is ERC20 {
         uint256 totalPrice = 0;
 
         if (_amount < 50000 * (10 ** 18)) {
-            totalPrice = _amount * tier1Price;
+            totalPrice = (_amount * tier1Price) / 1 ether;
         } else if (
             _amount > 50000 * (10 ** 18) && _amount < 100000 * (10 ** 18)
         ) {
-            totalPrice = _amount * tier2Price;
+            totalPrice = (_amount * tier2Price) / 1 ether;
         } else {
-            totalPrice = _amount * tier3Price;
+            totalPrice = (_amount * tier3Price) / 1 ether;
         }
 
         require(msg.value >= totalPrice, "Insufficient Funds");
